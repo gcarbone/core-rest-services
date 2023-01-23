@@ -1,0 +1,11 @@
+/* .swagger-ui { background-color: red } */
+.swagger-ui .topbar {
+  display: none;
+}
+.swagger-ui .info .title {
+    content: "Core REST Services";
+  color: #3b4151;
+  font-family: sans-serif;
+  font-size: 36px;
+  margin: 0;
+}

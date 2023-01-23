@@ -1,0 +1,287 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "crestservices",
+    "version": "1.0.0",
+    "license": {
+      "name": "ISC"
+    },
+    "description": "Specification JSONs: [v2](/api-spec/v2), [v3](/api-spec/v3).\n\nCore REST Services"
+  },
+  "paths": {
+    "/filesystem": {
+      "get": {
+        "summary": "/filesystem",
+        "responses": {},
+        "tags": []
+      },
+      "post": {
+        "summary": "/filesystem",
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/filesystem/basepath": {
+      "get": {
+        "summary": "/filesystem/basepath",
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/filesystem/tmpdir": {
+      "get": {
+        "summary": "/filesystem/tmpdir",
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/filesystem/listdir": {
+      "get": {
+        "summary": "/filesystem/listdir",
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/filesystem/test": {
+      "get": {
+        "summary": "/filesystem/test",
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/cmd/exec": {
+      "post": {
+        "summary": "/cmd/exec",
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/ad/user": {
+      "get": {
+        "summary": "/ad/user",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "example": "sAMAccountName,cn",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sAMAccountName": {
+                        "type": "string"
+                      },
+                      "cn": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "sAMAccountName",
+                      "cn"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": []
+      },
+      "post": {
+        "summary": "/ad/user",
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/ad/user/{userName}": {
+      "get": {
+        "summary": "/ad/user/{userName}",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "tags": []
+      },
+      "delete": {
+        "summary": "/ad/user/{userName}",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/ad/user/{userName}/memberOf/{group}": {
+      "get": {
+        "summary": "/ad/user/{userName}/memberOf/{group}",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "group",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/ad/user/{userName}/exists": {
+      "get": {
+        "summary": "/ad/user/{userName}/exists",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/ad/user/{userName}/enable": {
+      "put": {
+        "summary": "/ad/user/{userName}/enable",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/ad/user/{userName}/unlock": {
+      "put": {
+        "summary": "/ad/user/{userName}/unlock",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/ad/user/{userName}/disable": {
+      "put": {
+        "summary": "/ad/user/{userName}/disable",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/ad/user/{userName}/group/{groupName}": {
+      "put": {
+        "summary": "/ad/user/{userName}/group/{groupName}",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "groupName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "tags": []
+      },
+      "delete": {
+        "summary": "/ad/user/{userName}/group/{groupName}",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "groupName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "tags": []
+      }
+    }
+  },
+  "tags": [],
+  "servers": [
+    {
+      "url": "https://localhost:4000"
+    }
+  ]
+}

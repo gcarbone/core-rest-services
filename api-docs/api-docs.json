@@ -1,0 +1,310 @@
+{
+  "definitions": {},
+  "info": {
+    "title": "crestservices",
+    "version": "1.0.0",
+    "license": {
+      "name": "ISC"
+    },
+    "description": "Specification JSONs: [v2](/api-spec/v2), [v3](/api-spec/v3).\n\nCore REST Services"
+  },
+  "paths": {
+    "/filesystem": {
+      "get": {
+        "summary": "/filesystem",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": []
+      },
+      "post": {
+        "summary": "/filesystem",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/filesystem/basepath": {
+      "get": {
+        "summary": "/filesystem/basepath",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/filesystem/tmpdir": {
+      "get": {
+        "summary": "/filesystem/tmpdir",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/filesystem/listdir": {
+      "get": {
+        "summary": "/filesystem/listdir",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/filesystem/test": {
+      "get": {
+        "summary": "/filesystem/test",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/cmd/exec": {
+      "post": {
+        "summary": "/cmd/exec",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/ad/user": {
+      "get": {
+        "summary": "/ad/user",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "fields",
+            "in": "query",
+            "example": "sAMAccountName,cn"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "sAMAccountName": {
+                    "type": "string"
+                  },
+                  "cn": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "sAMAccountName",
+                  "cn"
+                ]
+              }
+            }
+          }
+        },
+        "tags": [],
+        "produces": [
+          "application/json"
+        ]
+      },
+      "post": {
+        "summary": "/ad/user",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/ad/user/{userName}": {
+      "get": {
+        "summary": "/ad/user/{userName}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "tags": []
+      },
+      "delete": {
+        "summary": "/ad/user/{userName}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/ad/user/{userName}/memberOf/{group}": {
+      "get": {
+        "summary": "/ad/user/{userName}/memberOf/{group}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "group",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/ad/user/{userName}/exists": {
+      "get": {
+        "summary": "/ad/user/{userName}/exists",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/ad/user/{userName}/enable": {
+      "put": {
+        "summary": "/ad/user/{userName}/enable",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/ad/user/{userName}/unlock": {
+      "put": {
+        "summary": "/ad/user/{userName}/unlock",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/ad/user/{userName}/disable": {
+      "put": {
+        "summary": "/ad/user/{userName}/disable",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/ad/user/{userName}/group/{groupName}": {
+      "put": {
+        "summary": "/ad/user/{userName}/group/{groupName}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "groupName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "tags": []
+      },
+      "delete": {
+        "summary": "/ad/user/{userName}/group/{groupName}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "groupName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "tags": []
+      }
+    }
+  },
+  "swagger": "2.0",
+  "tags": [],
+  "schemes": [
+    "https"
+  ],
+  "host": "localhost:4000"
+}
