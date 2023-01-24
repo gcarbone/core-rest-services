@@ -14,7 +14,7 @@ router.use((req,res,next) =>{
 */
 
 router.get("/user", function (req, res, next) {
-    const fields = req.query.fields.split(',');
+    const fields = req.query.fields ? req.query.fields.split(','): '';
     //const filter = JSON.parse(req.query.filter) || {};
     console.log(fields);
     connection.user().get({fields}).then(users => {
@@ -68,6 +68,31 @@ router.get("/user/:userName/exists", function (req, res, next) {
         console.log('Error:', err);
         next(err);
     });
+  
+});
+
+router.put("/user/:userName/passwordExpires/:expires", function (req, res, next) {
+    const expires = req.params.expires === 'false'
+    console.log(req.params.expires);
+    if (expires)
+    connection.user(req.params.userName).passwordExpires().then(response => {
+        console.log(response);
+        res.json(response);
+        next();
+    }).catch(err => {
+        console.log('Error:', err);
+        next(err);
+    });
+    else {
+        connection.user(req.params.userName).passwordNeverExpires().then(response => {
+            console.log(response);
+            res.json(response);
+            next();
+        }).catch(err => {
+            console.log('Error:', err);
+            next(err);
+        });
+    }
   
 });
 

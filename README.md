@@ -1,17 +1,17 @@
 # Core REST Services
+![](https://github.com/gcarbone/core-rest-services/raw/main/public/ui/core-rest-services-logo-zip-file/png/logo-no-background.png)
 
-Simple overview of use/purpose.
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+Designed to be easily extensible, Core REST Services aims to provide a REST interface to common data center functions.  Many organizations continue to adopt next-gen iPaaS platforms to automate processes and remove manual "swivel-chair" data entry across multiple systems.  However, most organizations are still tied to some "legacy" systems that do not provide a modern way to access them.  This project (hopefully) will make it easier to include these systems in their process automation efforts.
 
 ## Getting Started
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+* node v14+
+* maybe others
 
 ### Installing
 

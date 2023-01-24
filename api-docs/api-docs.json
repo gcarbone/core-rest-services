@@ -1,10 +1,10 @@
 {
   "definitions": {},
   "info": {
-    "title": "crestservices",
+    "title": "core-rest-services",
     "version": "1.0.0",
     "license": {
-      "name": "ISC"
+      "name": "MIT"
     },
     "description": "Specification JSONs: [v2](/api-spec/v2), [v3](/api-spec/v3).\n\nCore REST Services"
   },
@@ -90,14 +90,7 @@
         "consumes": [
           "application/json"
         ],
-        "parameters": [
-          {
-            "type": "string",
-            "name": "fields",
-            "in": "query",
-            "example": "sAMAccountName,cn"
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -106,16 +99,82 @@
               "items": {
                 "type": "object",
                 "properties": {
+                  "dn": {
+                    "type": "string"
+                  },
                   "sAMAccountName": {
+                    "type": "string"
+                  },
+                  "whenCreated": {
+                    "type": "string"
+                  },
+                  "pwdLastSet": {
+                    "type": "string"
+                  },
+                  "userAccountControl": {
                     "type": "string"
                   },
                   "cn": {
                     "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "groups": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "dn": {
+                          "type": "string"
+                        },
+                        "cn": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "groupType": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "dn",
+                        "cn",
+                        "description",
+                        "groupType"
+                      ]
+                    }
+                  },
+                  "userPrincipalName": {
+                    "type": "string"
+                  },
+                  "mail": {
+                    "type": "string"
+                  },
+                  "sn": {
+                    "type": "string"
+                  },
+                  "givenName": {
+                    "type": "string"
+                  },
+                  "lockoutTime": {
+                    "type": "string"
                   }
                 },
                 "required": [
+                  "dn",
                   "sAMAccountName",
-                  "cn"
+                  "whenCreated",
+                  "pwdLastSet",
+                  "userAccountControl",
+                  "cn",
+                  "description",
+                  "groups",
+                  "userPrincipalName",
+                  "mail",
+                  "sn",
+                  "givenName"
                 ]
               }
             }
@@ -199,6 +258,28 @@
         "parameters": [
           {
             "name": "userName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/ad/user/{userName}/passwordExpires/{expires}": {
+      "put": {
+        "summary": "/ad/user/{userName}/passwordExpires/{expires}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "expires",
             "in": "path",
             "required": true
           }
