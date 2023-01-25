@@ -36,7 +36,13 @@ expressOasGenerator.handleResponses(app,{
   }
 });
 
+const logger = require("./logger");
+app.use(logger.logger);
 
+app.get('/ping',function (req, res, next) {
+  res.json({ alive:true });
+  next();
+});
 // ****************  Activate only ONE auth module at a time
 // for auth-jwt
 //const auth = require("./endpoints/auth-jwt");

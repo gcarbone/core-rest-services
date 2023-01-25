@@ -81,10 +81,4 @@ router.get("/listdir", async function (req, res, next) {
   next();
 });
 
-router.get("/test", function (req, res, next) {
-  res.send('I got a test');
-  next();
-  
-});
-
 module.exports = router;

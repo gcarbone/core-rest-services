@@ -15,10 +15,9 @@ router.use((req,res,next) =>{
 
 router.get("/user", function (req, res, next) {
     const fields = req.query.fields ? req.query.fields.split(','): '';
-    //const filter = JSON.parse(req.query.filter) || {};
+
     console.log(fields);
     connection.user().get({fields}).then(users => {
-        console.log('Your users:', users);
         res.json(users);
         next();
     }).catch(err => {
@@ -29,9 +28,7 @@ router.get("/user", function (req, res, next) {
 });
 router.get("/user/:userName", function (req, res, next) {
     const filter = req.query.filter || '';
-    console.log(req.params.userName);
     connection.user(req.params.userName).get(filter).then(user => {
-        console.log(user);
         res.json(user);
         next();
     }).catch(err => {
@@ -44,7 +41,6 @@ router.get("/user/:userName", function (req, res, next) {
 router.get("/user/:userName/memberOf/:group", function (req, res, next) {
     console.log(req.params.userName);
     connection.user(req.params.userName).isMemberOf(req.params.group).then(response => {
-        console.log(response);
         res.json({
             isMember: response
         });
@@ -57,7 +53,6 @@ router.get("/user/:userName/memberOf/:group", function (req, res, next) {
 });
 
 router.get("/user/:userName/exists", function (req, res, next) {
-    console.log(req.params.userName);
     connection.user(req.params.userName).exists().then(response => {
         console.log(response);
         res.json({
@@ -73,10 +68,8 @@ router.get("/user/:userName/exists", function (req, res, next) {
 
 router.put("/user/:userName/passwordExpires/:expires", function (req, res, next) {
     const expires = req.params.expires === 'false'
-    console.log(req.params.expires);
     if (expires)
     connection.user(req.params.userName).passwordExpires().then(response => {
-        console.log(response);
         res.json(response);
         next();
     }).catch(err => {
@@ -85,7 +78,6 @@ router.put("/user/:userName/passwordExpires/:expires", function (req, res, next)
     });
     else {
         connection.user(req.params.userName).passwordNeverExpires().then(response => {
-            console.log(response);
             res.json(response);
             next();
         }).catch(err => {
@@ -97,9 +89,7 @@ router.put("/user/:userName/passwordExpires/:expires", function (req, res, next)
 });
 
 router.put("/user/:userName/enable", function (req, res, next) {
-    console.log(req.params.userName);
     connection.user(req.params.userName).enable().then(response => {
-        console.log(response);
         res.json(response);
         next();
     }).catch(err => {
@@ -110,9 +100,7 @@ router.put("/user/:userName/enable", function (req, res, next) {
 });
 
 router.put("/user/:userName/unlock", function (req, res, next) {
-    console.log(req.params.userName);
     connection.user(req.params.userName).unlock().then(response => {
-        console.log(response);
         res.json(response);
         next();
     }).catch(err => {
@@ -124,9 +112,7 @@ router.put("/user/:userName/unlock", function (req, res, next) {
 });
 
 router.put("/user/:userName/disable", function (req, res, next) {
-    console.log(req.params.userName);
     connection.user(req.params.userName).disable().then(response => {
-        console.log(response);
         res.json(response);
         next();
     }).catch(err => {
@@ -137,9 +123,7 @@ router.put("/user/:userName/disable", function (req, res, next) {
 });
 
 router.delete("/user/:userName", function (req, res, next) {
-    console.log(req.params);
     connection.user(req.params.userName).remove().then(response => {
-        console.log(response);
         res.json(response);
         next();
     }).catch(err => {
@@ -152,7 +136,6 @@ router.delete("/user/:userName", function (req, res, next) {
 
 router.put("/user/:userName/group/:groupName", function (req, res, next) {
     connection.group(req.params.groupName).addUser(req.params.userName).then(response => {
-        console.log(response);
         res.json(response);
         next();
     }).catch(err => {
@@ -165,7 +148,6 @@ router.put("/user/:userName/group/:groupName", function (req, res, next) {
 
 router.delete("/user/:userName/group/:groupName", function (req, res, next) {
     connection.group(req.params.groupName).removeUser(req.params.userName).then(response => {
-        console.log(response);
         res.json(response);
         next();
     }).catch(err => {
@@ -177,7 +159,6 @@ router.delete("/user/:userName/group/:groupName", function (req, res, next) {
 });
 
 router.post("/user", function (req, res, next) {
-    console.log(req.body);
     connection.user().add({
         userName:req.body.userName,
         password:req.body.password,
@@ -188,7 +169,6 @@ router.post("/user", function (req, res, next) {
         title:req.body.title,
         location:req.body.location
     }).then(response => {
-        console.log(response);
         res.json(response);
         next();
     }).catch(err => {
@@ -199,12 +179,5 @@ router.post("/user", function (req, res, next) {
   
 });
 
-async function reconnect(){
-    let connection = new ad({
-        url: process.env.AD_URL,
-        user: process.env.AD_PRINCIPAL,
-        pass: process.env.AD_CREDENTIALS
-    });  
-}
 
 module.exports = router;
