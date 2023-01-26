@@ -6,6 +6,7 @@ const { SPEC_OUTPUT_FILE_BEHAVIOR } = expressOasGenerator;
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const https = require("https");
+const http = require("http");
 const fs = require("fs");
 const path = require("path");
 
@@ -23,24 +24,24 @@ const https_options = {
 
 const app = express();
 app.use(express.json());
-app.use(express.static('public'));
-expressOasGenerator.handleResponses(app,{
-  swaggerUiServePath: 'api-docs',
-  specOutputPath: './api-docs/api-docs.json',
+app.use(express.static("public"));
+expressOasGenerator.handleResponses(app, {
+  swaggerUiServePath: "api-docs",
+  specOutputPath: "./api-docs/api-docs.json",
   specOutputFileBehavior: true,
-  swaggerDocumentOptions: { 
-    customSiteTitle: 'Core REST Services',
-    customCssUrl: '/ui/core-rest-services.css',
-    customJs: '/ui/core-rest-services.js',
-    explorer:true
-  }
+  swaggerDocumentOptions: {
+    customSiteTitle: "Core REST Services",
+    customCssUrl: "/ui/core-rest-services.css",
+    customJs: "/ui/core-rest-services.js",
+    explorer: true,
+  },
 });
 
 const logger = require("./logger");
 app.use(logger.logger);
 
-app.get('/ping',function (req, res, next) {
-  res.json({ alive:true });
+app.get("/ping", function (req, res, next) {
+  res.json({ alive: true });
   next();
 });
 // ****************  Activate only ONE auth module at a time
@@ -64,9 +65,12 @@ app.use("/cmd", auth.validate, cmd);
 const ad = require("./endpoints/ad");
 app.use("/ad", auth.validate, ad);
 
-
+var server;
 expressOasGenerator.handleRequests();
-const server = https.createServer(https_options, app);
+if (process.env.HTTPS === "true")
+  server = https.createServer(https_options, app);
+else server = http.createServer(app);
+
 server.listen(port, () => {
   console.log(`Core REST Services running on ${port}...`);
   listroutes(app);
@@ -91,21 +95,27 @@ function listroutes(app) {
   });
   const op = routes
     .map((r) => {
-      return { path: r.path, keys:r.keys, methods: Object.keys(r.methods) };
+      return { path: r.path, keys: r.keys, methods: Object.keys(r.methods) };
     })
     .sort(function compareFn(a, b) {
       if (a.path === b.path) return 0;
       else if (a.path > b.path) return 1;
       else return -1;
     });
-    
+
   const out = [];
   var lastpath = "";
-  for (var i=0; i < op.length; i++) {
+  for (var i = 0; i < op.length; i++) {
     if (op[i].path != lastpath) {
       out.push({
         path: op[i].path,
-        methods: op.filter((r) => r.path === op[i].path).reduce((m,r)=>{return m+' '+r.methods},'').substring(1).replace(' ',','),
+        methods: op
+          .filter((r) => r.path === op[i].path)
+          .reduce((m, r) => {
+            return m + " " + r.methods;
+          }, "")
+          .substring(1)
+          .replace(" ", ","),
       });
       lastpath = op[i].path;
     }

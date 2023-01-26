@@ -26,33 +26,9 @@
         "consumes": [
           "application/json"
         ],
-        "parameters": [
-          {
-            "type": "string",
-            "name": "file",
-            "in": "query",
-            "example": "./admin-audit.csv"
-          },
-          {
-            "type": "boolean",
-            "name": "delete",
-            "in": "query",
-            "example": "false"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "string",
-              "example": "Time,Source,User,Resource,Name/ID,Action,Field,Old value,New value\nThu Sep 08 2022 19:05:23 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,user,Brent Creech,update,accessLevel,\"{\"\"accessLevel\"\":\"\"administrator\"\"}\",\"{\"\"accessLevel\"\":\"\"manage\"\"}\"\nThu Sep 08 2022 19:05:14 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,user,Brent Creech,update,disabled,true,\nThu Sep 08 2022 19:03:41 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,user,Brent Creech,update,disabled,,true\nThu Sep 08 2022 19:03:16 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,user,Brent Creech,update,accessLevel,\"{\"\"accessLevel\"\":\"\"manage\"\"}\",\"{\"\"accessLevel\"\":\"\"administrator\"\"}\"\nThu Sep 08 2022 18:07:09 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,flow,Inbound EDI,update,routers.0.routeRecordsUsing,\"\"\"script\"\"\",\"\"\"input_filters\"\"\"\nThu Sep 08 2022 18:01:34 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,user,,signin,IP address,,\"\"\"146.168.17.239\"\"\"\nThu Sep 08 2022 16:42:02 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,user,,signout,IP address,,\"\"\"146.168.17.239\"\"\"\nThu Sep 08 2022 15:39:57 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,user,,signin,IP address,,\"\"\"146.168.17.239\"\"\"\nThu Sep 08 2022 14:01:27 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,user,,signout,IP address,,\"\"\"146.168.17.239\"\"\"\nThu Sep 08 2022 14:00:08 GMT+0000 (Coordinated Universal Time),system,Gene Carbone,script,Determine X12 Document Type,update,scriptContentsHash,\"\"\"612b77a84d644e60471df073027d58629bcbb9adb358a4404a588801a8963af3\"\"\",\"\"\"612b77a84d644e60471df073666c09da24b91e6d92375e178b383da033528940\"\"\"\nThu Sep 08 2022 14:00:08 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,flow,Inbound EDI,update,routers,\"[{\"\"script\"\":{\"\"_scriptId\"\":\"\"6319efae9d81d57023954c3c\"\",\"\"function\"\":\"\"branching\"\"},\"\"routeRecordsUsing\"\":\"\"script\"\",\"\"id\"\":\"\"EnNOTE\"\",\"\"routeRecordsTo\"\":\"\"first_matching_branch\"\",\"\"branches\"\":[{\"\"name\"\":\"\"X12 Version 4010\"\",\"\"pageProcessors\"\":[{\"\"responseMapping\"\":{\"\"fields\"\":[],\"\"lists\"\":[]},\"\"setupInProgress\"\":true}]},{\"\"name\"\":\"\"All Other Versions\"\",\"\"pageProcessors\"\":[{\"\"responseMapping\"\":{\"\"fields\"\":[],\"\"lists\"\":[]},\"\"setupInProgress\"\":true}]}]}]\",\"[{\"\"routeRecordsUsing\"\":\"\"script\"\",\"\"id\"\":\"\"EnNOTE\"\",\"\"routeRecordsTo\"\":\"\"first_matching_branch\"\",\"\"branches\"\":[{\"\"name\"\":\"\"X12 Version 4010\"\",\"\"pageProcessors\"\":[{\"\"responseMapping\"\":{\"\"fields\"\":[],\"\"lists\"\":[]},\"\"setupInProgress\"\":true}],\"\"nextRouterId\"\":\"\"i8nIPM\"\"},{\"\"name\"\":\"\"All Other Versions\"\",\"\"pageProcessors\"\":[{\"\"responseMapping\"\":{\"\"fields\"\":[],\"\"lists\"\":[]},\"\"setupInProgress\"\":true}]}],\"\"script\"\":{\"\"_scriptId\"\":\"\"6319efae9d81d57023954c3c\"\",\"\"function\"\":\"\"branching\"\"}},{\"\"routeRecordsUsing\"\":\"\"script\"\",\"\"id\"\":\"\"i8nIPM\"\",\"\"routeRecordsTo\"\":\"\"first_matching_branch\"\",\"\"branches\"\":[{\"\"name\"\":\"\"Purchase Order\"\",\"\"pageProcessors\"\":[{\"\"responseMapping\"\":{\"\"fields\"\":[],\"\"lists\"\":[]},\"\"setupInProgress\"\":true}]},{\"\"name\"\":\"\"Invoice\"\",\"\"pageProcessors\"\":[{\"\"responseMapping\"\":{\"\"fields\"\":[],\"\"lists\"\":[]},\"\"setupInProgress\"\":true}]},{\"\"name\"\":\"\"Advance Ship Notice\"\",\"\"pageProcessors\"\":[{\"\"responseMapping\"\":{\"\"fields\"\":[],\"\"lists\"\":[]},\"\"setupInProgress\"\":true}]},{\"\"name\"\":\"\"Unhandled Document\"\",\"\"pageProcessors\"\":[{\"\"responseMapping\"\":{\"\"fields\"\":[],\"\"lists\"\":[]},\"\"setupInProgress\"\":true}]}],\"\"script\"\":{\"\"_scriptId\"\":\"\"6319f2963437844a8b0f9608\"\",\"\"function\"\":\"\"branching\"\"}}]\"\nThu Sep 08 2022 13:48:06 GMT+0000 (Coordinated Universal Time),system,Gene Carbone,script,Determine X12 Document Type,create,,,\nThu Sep 08 2022 13:41:26 GMT+0000 (Coordinated Universal Time),system,Gene Carbone,script,Determine X12 Version,update,scriptContentsHash,\"\"\"612b77a84d644e60471df073027d58629bcbb9adb358a4404a588801a8963af3\"\"\",\"\"\"612b77a84d644e60471df0739262a430fe4788658411efd7530e89887166c8d9\"\"\"\nThu Sep 08 2022 13:41:20 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,flow,Inbound EDI,update,routers,[],\"[{\"\"routeRecordsUsing\"\":\"\"script\"\",\"\"id\"\":\"\"EnNOTE\"\",\"\"routeRecordsTo\"\":\"\"first_matching_branch\"\",\"\"branches\"\":[{\"\"name\"\":\"\"X12 Version 4010\"\",\"\"pageProcessors\"\":[{\"\"responseMapping\"\":{\"\"fields\"\":[],\"\"lists\"\":[]},\"\"setupInProgress\"\":true}]},{\"\"name\"\":\"\"All Other Versions\"\",\"\"pageProcessors\"\":[{\"\"responseMapping\"\":{\"\"fields\"\":[],\"\"lists\"\":[]},\"\"setupInProgress\"\":true}]}],\"\"script\"\":{\"\"_scriptId\"\":\"\"6319efae9d81d57023954c3c\"\",\"\"function\"\":\"\"branching\"\"}}]\"\nThu Sep 08 2022 13:35:42 GMT+0000 (Coordinated Universal Time),system,Gene Carbone,script,Determine X12 Version,create,,,\nThu Sep 08 2022 13:25:12 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,flow,Inbound EDI,update,pageGenerators,[],\"[{\"\"_exportId\"\":\"\"6319ed36a9a1922e7f1bab81\"\",\"\"skipRetries\"\":false}]\"\nThu Sep 08 2022 13:25:12 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,export,Retrieve Inbound EDI Documents,update,rawData,,\"\"\"612b77a84d644e60471df0732b9bc9c2eabd4a6286e13c213e85e937\"\"\"\nThu Sep 08 2022 13:25:11 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,export,Retrieve Inbound EDI Documents,create,,,\nThu Sep 08 2022 13:23:39 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,user,,signin,IP address,,\"\"\"146.168.17.239\"\"\"\nThu Sep 08 2022 13:16:33 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,user,,signout,IP address,,\"\"\"146.168.17.239\"\"\"\nThu Sep 08 2022 13:16:19 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,user,,signin,IP address,,\"\"\"146.168.17.239\"\"\"\nThu Sep 08 2022 13:14:28 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,integration,Branching Examples,update,_registeredConnectionIds,[],\"[\"\"6319eab44c77df2c045c5127\"\"]\"\nThu Sep 08 2022 13:14:28 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,connection,Orderful Demo,create,,,\nThu Sep 08 2022 13:13:05 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,user,,signin,IP address,,\"\"\"146.168.17.239\"\"\"\nThu Sep 08 2022 13:12:50 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,user,,signout,IP address,,\"\"\"146.168.17.239\"\"\"\nThu Sep 08 2022 13:10:54 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,connection,GGC celigo.files.com,update,ftp.password,\"\"\"******\"\"\",\"\"\"******\"\"\"\nThu Sep 08 2022 13:09:35 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,flow,Inbound EDI,create,,,\nThu Sep 08 2022 13:09:04 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,integration,Branching Examples,create,,,\nThu Sep 08 2022 13:07:30 GMT+0000 (Coordinated Universal Time),ui,Gene Carbone,user,,signin,IP address,,\"\"\"146.168.17.239\"\"\"\n"
-            }
-          }
-        },
-        "tags": [],
-        "produces": [
-          "text/csv"
-        ]
+        "parameters": [],
+        "responses": {},
+        "tags": []
       },
       "post": {
         "summary": "/filesystem",
@@ -108,63 +84,9 @@
         "consumes": [
           "application/json"
         ],
-        "parameters": [
-          {
-            "type": "string",
-            "name": "dir",
-            "in": "query",
-            "example": "."
-          },
-          {
-            "type": "boolean",
-            "name": "filesOnly",
-            "in": "query",
-            "example": "true"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string"
-                  },
-                  "name": {
-                    "type": "string"
-                  },
-                  "path": {
-                    "type": "string"
-                  },
-                  "size": {
-                    "type": "number"
-                  },
-                  "lastModifiedTime": {
-                    "type": "string"
-                  },
-                  "createdTime": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "type",
-                  "name",
-                  "path",
-                  "size",
-                  "lastModifiedTime",
-                  "createdTime"
-                ]
-              }
-            }
-          }
-        },
-        "tags": [],
-        "produces": [
-          "application/json"
-        ]
+        "parameters": [],
+        "responses": {},
+        "tags": []
       }
     },
     "/cmd/exec": {
@@ -173,56 +95,9 @@
         "consumes": [
           "application/json"
         ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "command": {
-                  "type": "string",
-                  "example": "ls -al"
-                },
-                "cwd": {
-                  "type": "string",
-                  "example": "./"
-                },
-                "wait": {
-                  "type": "boolean",
-                  "example": true
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "stdout": {
-                  "type": "string",
-                  "example": "total 712\ndrwxr-xr-x   21 gcarbone  staff     672 Jan 25 11:44 .\ndrwxr-xr-x   17 gcarbone  staff     544 Jan 23 13:22 ..\n-rw-r--r--    1 gcarbone  staff     600 Jan 25 15:40 .env\ndrwxr-xr-x   15 gcarbone  staff     480 Jan 24 09:30 .git\n-rw-r--r--    1 gcarbone  staff      20 Jan 23 14:56 .gitignore\n-rw-r--r--    1 gcarbone  staff    1821 Jan 23 15:36 README.md\n-rw-r--r--@   1 gcarbone  staff    6438 Sep  8 15:21 admin-audit copy.csv\n-rw-r--r--@   1 gcarbone  staff    6438 Sep  8 15:21 admin-audit.csv\ndrwxr-xr-x    4 gcarbone  staff     128 Jan 20 15:36 api-docs\n-rw-r--r--    1 gcarbone  staff    1302 Jan  4 16:37 cert.pem\n-rw-r--r--    1 gcarbone  staff    3205 Jan 25 15:41 core-rest-services.js\ndrwxr-xr-x    7 gcarbone  staff     224 Jan 20 12:41 endpoints\n-rw-r--r--    1 gcarbone  staff    1679 Jan  4 16:36 key.pem\n-rw-r--r--    1 gcarbone  staff    1051 Jan 23 12:35 license.txt\n-rw-r--r--    1 gcarbone  staff    1050 Jan 25 11:42 logger.js\n-rw-r--r--    1 gcarbone  staff    1464 Jan 25 11:44 myfile\ndrwxr-xr-x  271 gcarbone  staff    8672 Jan 16 20:14 node_modules\n-rw-r--r--    1 gcarbone  staff      50 Jan 20 12:42 nodemon.json\n-rw-r--r--    1 gcarbone  staff  302393 Jan 16 20:14 package-lock.json\n-rw-r--r--    1 gcarbone  staff     607 Jan 23 12:40 package.json\ndrwxr-xr-x    4 gcarbone  staff     128 Jan 23 12:52 public\n"
-                },
-                "stderr": {
-                  "type": "string",
-                  "example": ""
-                },
-                "error": {
-                  "type": "null",
-                  "example": null
-                }
-              }
-            }
-          }
-        },
-        "tags": [],
-        "produces": [
-          "application/json"
-        ]
+        "parameters": [],
+        "responses": {},
+        "tags": []
       }
     },
     "/ad/user": {
@@ -232,196 +107,17 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "dn": {
-                    "type": "string"
-                  },
-                  "sAMAccountName": {
-                    "type": "string"
-                  },
-                  "whenCreated": {
-                    "type": "string"
-                  },
-                  "pwdLastSet": {
-                    "type": "string"
-                  },
-                  "userAccountControl": {
-                    "type": "string"
-                  },
-                  "cn": {
-                    "type": "string"
-                  },
-                  "description": {
-                    "type": "string"
-                  },
-                  "groups": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "dn": {
-                          "type": "string"
-                        },
-                        "cn": {
-                          "type": "string"
-                        },
-                        "description": {
-                          "type": "string"
-                        },
-                        "groupType": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "dn",
-                        "cn",
-                        "description",
-                        "groupType"
-                      ]
-                    }
-                  },
-                  "userPrincipalName": {
-                    "type": "string"
-                  },
-                  "mail": {
-                    "type": "string"
-                  },
-                  "sn": {
-                    "type": "string"
-                  },
-                  "givenName": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "dn",
-                  "sAMAccountName",
-                  "whenCreated",
-                  "pwdLastSet",
-                  "userAccountControl",
-                  "cn",
-                  "description",
-                  "groups",
-                  "userPrincipalName",
-                  "mail",
-                  "sn",
-                  "givenName"
-                ]
-              }
-            }
-          }
-        },
-        "tags": [],
-        "produces": [
-          "application/json"
-        ]
+        "responses": {},
+        "tags": []
       },
       "post": {
         "summary": "/ad/user",
         "consumes": [
           "application/json"
         ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "userName": {
-                  "type": "string",
-                  "example": "hsolo"
-                },
-                "password": {
-                  "type": "string",
-                  "example": "******"
-                },
-                "commonName": {
-                  "type": "string",
-                  "example": "hsolo"
-                },
-                "firstName": {
-                  "type": "string",
-                  "example": "Han"
-                },
-                "lastName": {
-                  "type": "string",
-                  "example": "Solo"
-                },
-                "email": {
-                  "type": "string",
-                  "example": "hsolo@ad.celigo-labs.copm"
-                },
-                "title": {
-                  "type": "string",
-                  "example": "Chief Smuggling Officer"
-                },
-                "location": {
-                  "type": "string",
-                  "example": "!Users"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "cn": {
-                  "type": "string",
-                  "example": "hsolo"
-                },
-                "givenName": {
-                  "type": "string",
-                  "example": "Han"
-                },
-                "sn": {
-                  "type": "string",
-                  "example": "Solo"
-                },
-                "mail": {
-                  "type": "string",
-                  "example": "hsolo@ad.celigo-labs.copm"
-                },
-                "uid": {
-                  "type": "string",
-                  "example": "hsolo"
-                },
-                "title": {
-                  "type": "string",
-                  "example": "Chief Smuggling Officer"
-                },
-                "userPrincipalName": {
-                  "type": "string",
-                  "example": "hsolo@ad.celigo-labs.com"
-                },
-                "sAMAccountName": {
-                  "type": "string",
-                  "example": "hsolo"
-                },
-                "objectClass": {
-                  "type": "string",
-                  "example": "inetOrgPerson"
-                }
-              }
-            }
-          }
-        },
-        "tags": [],
-        "produces": [
-          "application/json"
-        ]
+        "parameters": [],
+        "responses": {},
+        "tags": []
       }
     },
     "/ad/user/{userName}": {
@@ -434,24 +130,11 @@
           {
             "name": "userName",
             "in": "path",
-            "required": true,
-            "type": "string",
-            "example": "hsolo"
+            "required": true
           }
         ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
-          }
-        },
-        "tags": [],
-        "produces": [
-          "application/json"
-        ]
+        "responses": {},
+        "tags": []
       },
       "delete": {
         "summary": "/ad/user/{userName}",
@@ -501,29 +184,11 @@
           {
             "name": "userName",
             "in": "path",
-            "required": true,
-            "type": "string",
-            "example": "hsolo"
+            "required": true
           }
         ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "exists": {
-                  "type": "boolean",
-                  "example": true
-                }
-              }
-            }
-          }
-        },
-        "tags": [],
-        "produces": [
-          "application/json"
-        ]
+        "responses": {},
+        "tags": []
       }
     },
     "/ad/user/{userName}/passwordExpires/{expires}": {
@@ -645,7 +310,7 @@
   "swagger": "2.0",
   "tags": [],
   "schemes": [
-    "https"
+    "http"
   ],
   "host": "localhost:4000"
 }
