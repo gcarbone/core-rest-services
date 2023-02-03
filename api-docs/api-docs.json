@@ -47,24 +47,8 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "basepath": {
-                  "type": "string",
-                  "example": "/Users/gcarbone/node/core-rest-services"
-                }
-              }
-            }
-          }
-        },
-        "tags": [],
-        "produces": [
-          "application/json"
-        ]
+        "responses": {},
+        "tags": []
       }
     },
     "/filesystem/tmpdir": {
@@ -115,9 +99,100 @@
         "consumes": [
           "application/json"
         ],
-        "parameters": [],
-        "responses": {},
-        "tags": []
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userName": {
+                  "type": "string",
+                  "example": "hsolo"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "******"
+                },
+                "commonName": {
+                  "type": "string",
+                  "example": "hsolo"
+                },
+                "firstName": {
+                  "type": "string",
+                  "example": "Han"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Solo"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "hsolo@ad.celigo-labs.copm"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Chief Smuggling Officer"
+                },
+                "location": {
+                  "type": "string",
+                  "example": "!Users"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "cn": {
+                  "type": "string",
+                  "example": "hsolo"
+                },
+                "givenName": {
+                  "type": "string",
+                  "example": "Han"
+                },
+                "sn": {
+                  "type": "string",
+                  "example": "Solo"
+                },
+                "mail": {
+                  "type": "string",
+                  "example": "hsolo@ad.celigo-labs.copm"
+                },
+                "uid": {
+                  "type": "string",
+                  "example": "hsolo"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Chief Smuggling Officer"
+                },
+                "userPrincipalName": {
+                  "type": "string",
+                  "example": "hsolo@ad.celigo-labs.com"
+                },
+                "sAMAccountName": {
+                  "type": "string",
+                  "example": "hsolo"
+                },
+                "objectClass": {
+                  "type": "string",
+                  "example": "inetOrgPerson"
+                }
+              }
+            }
+          }
+        },
+        "tags": [],
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/ad/user/{userName}": {
@@ -310,7 +385,7 @@
   "swagger": "2.0",
   "tags": [],
   "schemes": [
-    "http"
+    "https"
   ],
   "host": "localhost:4000"
 }
