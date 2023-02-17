@@ -9,6 +9,102 @@
     "description": "Specification JSONs: [v2](/api-spec/v2), [v3](/api-spec/v3).\n\nCore REST Services"
   },
   "paths": {
+    "/echo": {
+      "post": {
+        "summary": "/echo",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userName": {
+                    "type": "string",
+                    "example": "hsolo"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "******"
+                  },
+                  "commonName": {
+                    "type": "string",
+                    "example": "hsolo"
+                  },
+                  "firstName": {
+                    "type": "string",
+                    "example": "Han"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "example": "Solo"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "hsolo@ad.celigo-labs.copm"
+                  },
+                  "title": {
+                    "type": "string",
+                    "example": "Chief Smuggling Officer"
+                  },
+                  "location": {
+                    "type": "string",
+                    "example": "!Users"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "userName": {
+                      "type": "string",
+                      "example": "hsolo"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "******"
+                    },
+                    "commonName": {
+                      "type": "string",
+                      "example": "hsolo"
+                    },
+                    "firstName": {
+                      "type": "string",
+                      "example": "Han"
+                    },
+                    "lastName": {
+                      "type": "string",
+                      "example": "Solo"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "hsolo@ad.celigo-labs.copm"
+                    },
+                    "title": {
+                      "type": "string",
+                      "example": "Chief Smuggling Officer"
+                    },
+                    "location": {
+                      "type": "string",
+                      "example": "!Users"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": []
+      }
+    },
     "/ping": {
       "get": {
         "summary": "/ping",
@@ -64,100 +160,7 @@
       },
       "post": {
         "summary": "/ad/user",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "userName": {
-                    "type": "string",
-                    "example": "hsolo"
-                  },
-                  "password": {
-                    "type": "string",
-                    "example": "******"
-                  },
-                  "commonName": {
-                    "type": "string",
-                    "example": "hsolo"
-                  },
-                  "firstName": {
-                    "type": "string",
-                    "example": "Han"
-                  },
-                  "lastName": {
-                    "type": "string",
-                    "example": "Solo"
-                  },
-                  "email": {
-                    "type": "string",
-                    "example": "hsolo@ad.celigo-labs.copm"
-                  },
-                  "title": {
-                    "type": "string",
-                    "example": "Chief Smuggling Officer"
-                  },
-                  "location": {
-                    "type": "string",
-                    "example": "!Users"
-                  }
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "cn": {
-                      "type": "string",
-                      "example": "hsolo"
-                    },
-                    "givenName": {
-                      "type": "string",
-                      "example": "Han"
-                    },
-                    "sn": {
-                      "type": "string",
-                      "example": "Solo"
-                    },
-                    "mail": {
-                      "type": "string",
-                      "example": "hsolo@ad.celigo-labs.copm"
-                    },
-                    "uid": {
-                      "type": "string",
-                      "example": "hsolo"
-                    },
-                    "title": {
-                      "type": "string",
-                      "example": "Chief Smuggling Officer"
-                    },
-                    "userPrincipalName": {
-                      "type": "string",
-                      "example": "hsolo@ad.celigo-labs.com"
-                    },
-                    "sAMAccountName": {
-                      "type": "string",
-                      "example": "hsolo"
-                    },
-                    "objectClass": {
-                      "type": "string",
-                      "example": "inetOrgPerson"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
+        "responses": {},
         "tags": []
       }
     },

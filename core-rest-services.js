@@ -3,8 +3,6 @@ require("dotenv").config();
 const express = require("express");
 const expressOasGenerator = require("express-oas-generator");
 const { SPEC_OUTPUT_FILE_BEHAVIOR } = expressOasGenerator;
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 const https = require("https");
 const http = require("http");
 const fs = require("fs");
@@ -23,8 +21,7 @@ const https_options = {
 };
 
 const app = express();
-app.use(express.json());
-app.use(express.static("public"));
+
 expressOasGenerator.handleResponses(app, {
   swaggerUiServePath: "api-docs",
   specOutputPath: "./api-docs/api-docs.json",
@@ -36,14 +33,23 @@ expressOasGenerator.handleResponses(app, {
     explorer: true,
   },
 });
-
 const logger = require("./logger");
 app.use(logger.logger);
+app.use(express.static("public"));
+app.use(express.json());
+app.post("/echo", function (req, res, next) {
+  res.send(req.body);
+  next();
+});
+
+
 
 app.get("/ping", function (req, res, next) {
   res.json({ alive: true });
   next();
 });
+
+
 // ****************  Activate only ONE auth module at a time
 // for auth-jwt
 //const auth = require("./endpoints/auth-jwt");
@@ -73,7 +79,7 @@ else server = http.createServer(app);
 
 server.listen(port, () => {
   console.log(`Core REST Services running on ${port}...`);
-  listroutes(app);
+  //listroutes(app);
 });
 
 //------------------------------------------------------------
