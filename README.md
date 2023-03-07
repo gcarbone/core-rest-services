@@ -15,17 +15,21 @@ Designed to be easily extensible, Core REST Services aims to provide a REST inte
 
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+* Clone this project or download the zip file and extract it into a folder
+* On the command line, execute `npm install`
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
+* On the command line, execute `npm start`
+* By default, HTTPS server starts on port 4000
+* The default API Key is located in the `.env` file in the root directory of this project.  I HIGHLY reccomend changing it immediately.
+* The default certificates used for HTTPS are simple, self-signed certs.  I HIGHLY reccomend changing these immediately.
 
+## The Configuration File (.env)
+
+    *NODE_ENV: the environment this server is running in.  Warning: If set to PROD, the OAS documentation will not be auto-generated
+    *PORT: The port to open for HTTP traffic
+    *LOG_TO_CONSOLE: Boolean (true | false) to control logging traffic to the console
 ## Help
 
 Any advise for common problems or issues.
