@@ -6,7 +6,7 @@ const levels = process.env.LOG_LEVELS;
 const logToConsole = process.env.LOG_TO_CONSOLE;
 const logDir = process.env.LOG_FILE_DIR;
 const logBaseName = process.env.LOG_FILE_BASE_NAME;
-
+const logFullPath = path.join(logDir,logBaseName) + '.log';
 const logger = winston.createLogger({
   level: "info",
   format: winston.format.json(),
@@ -19,16 +19,16 @@ const logger = winston.createLogger({
     new winston.transports.File({ filename: path.join(logDir,logBaseName) + '.log', level: "silly" }),
   ],
 });
-
+console.log("Logging to '" + logFullPath + "'");
 //
 // If we're not in production then log to the `console` with the format:
 // `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
 //
-//if (process.env.NODE_ENV !== 'production') {
-//  logger.add(new winston.transports.Console({
-//    format: winston.format.simple(),
-//  }));
-//}
+if (process.env.NODE_ENV !== 'production') {
+  logger.add(new winston.transports.Console({
+    format: winston.format.simple(),
+  }));
+}
 
 // TODO: add log file
 // rotating logs?

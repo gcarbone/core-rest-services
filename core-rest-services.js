@@ -71,6 +71,10 @@ app.use("/cmd", auth.validate, cmd);
 const ad = require("./endpoints/ad");
 app.use("/ad", auth.validate, ad);
 
+// PGP
+const pgp = require("./endpoints/pgp");
+app.use("/pgp", auth.validate, pgp);
+
 var server;
 expressOasGenerator.handleRequests();
 if (process.env.HTTPS === "true")
