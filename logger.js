@@ -24,7 +24,7 @@ console.log("Logging to '" + logFullPath + "'");
 // If we're not in production then log to the `console` with the format:
 // `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
 //
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.LOG_TO_CONSOLE == 'true' & !(process.env.NODE_ENV == 'production' | process.env.NODE_ENV == 'PROD')) {
   logger.add(new winston.transports.Console({
     format: winston.format.simple(),
   }));
