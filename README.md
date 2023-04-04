@@ -40,6 +40,8 @@ Designed to be easily extensible, Core REST Services aims to provide a REST inte
     * Clone this project or download the zip file and extract it into a folder
     * On the command line, execute `npm install`
 
+### Installing as a Service
+
 ### Executing program
 
     * On the command line, execute `npm start`
