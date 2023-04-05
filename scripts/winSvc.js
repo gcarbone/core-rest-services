@@ -42,8 +42,6 @@ svc.on('stop',function(){
 svc.on('error',function(){
   console.log("Error!");
 });
-console.log(svcDef);
-
 
 switch (process.argv[2]){
   case 'install':
