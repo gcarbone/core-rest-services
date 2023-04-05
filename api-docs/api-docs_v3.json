@@ -66,7 +66,96 @@
     "/ad/user": {
       "get": {
         "summary": "/ad/user",
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "dn": {
+                        "type": "string"
+                      },
+                      "sAMAccountName": {
+                        "type": "string"
+                      },
+                      "whenCreated": {
+                        "type": "string"
+                      },
+                      "pwdLastSet": {
+                        "type": "string"
+                      },
+                      "userAccountControl": {
+                        "type": "string"
+                      },
+                      "cn": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "groups": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "dn": {
+                              "type": "string"
+                            },
+                            "cn": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "groupType": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "dn",
+                            "cn",
+                            "description",
+                            "groupType"
+                          ]
+                        }
+                      },
+                      "userPrincipalName": {
+                        "type": "string"
+                      },
+                      "mail": {
+                        "type": "string"
+                      },
+                      "sn": {
+                        "type": "string"
+                      },
+                      "givenName": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "dn",
+                      "sAMAccountName",
+                      "whenCreated",
+                      "pwdLastSet",
+                      "userAccountControl",
+                      "cn",
+                      "description",
+                      "groups",
+                      "userPrincipalName",
+                      "mail",
+                      "sn",
+                      "givenName"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
         "tags": []
       },
       "post": {
@@ -283,37 +372,7 @@
     "/pgp/encrypt": {
       "post": {
         "summary": "/pgp/encrypt",
-        "parameters": [
-          {
-            "name": "file",
-            "in": "query",
-            "example": "myfile",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "recipientKey": {
-                    "type": "string",
-                    "example": "-----BEGIN PGP PUBLIC KEY BLOCK-----\n\n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\nUgW7TgeGbHjC15k=\n=2STt\n-----END PGP PUBLIC KEY BLOCK-----\n"
-                  }
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
+        "responses": {},
         "tags": []
       }
     },
@@ -328,7 +387,7 @@
   "tags": [],
   "servers": [
     {
-      "url": "https://localhost:4000"
+      "url": "https://44.204.229.193:4000"
     }
   ]
 }

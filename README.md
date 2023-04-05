@@ -42,9 +42,17 @@ Designed to be easily extensible, Core REST Services aims to provide a REST inte
 
 ### Installing as a Service
 
-### Executing program
+#### Windows
+See the configuration file guide for configuration options
 
-    * On the command line, execute `npm start`
+    * To install and start the service - `npm run winSvc install`
+    * To uninstall the service - `npm run winSvc uninstall`
+    * Start the service - `npm run winSvc start`
+    * Start the service - `npm run winSvc stop`
+
+### Executing program (manually via command line)
+
+    * On the command line, execute `npm run start`
     * By default, HTTPS server starts on port 4000
     * The default API Key is located in the `.env` file in the root directory of this project.  I HIGHLY reccomend changing it immediately.
     * The default certificates used for HTTPS are simple, self-signed certs.  I HIGHLY reccomend changing these immediately.
@@ -57,6 +65,12 @@ Designed to be easily extensible, Core REST Services aims to provide a REST inte
     * PORT: The port to open for HTTP traffic
     * SERVER_CERT: path to the server's public certificate (you should change this immediately)
     * SERVER_KEY: path to the server's private key (you should change this immediately)
+
+### Windows Service Options
+    Leaving any of these blank will use the default "Local System" as the user
+    * WIN_SVC_DOMAIN: The domain for the "LogInAs" user for the service
+    * WIN_SVC_ACCOUNT: The "LogInAs" user for the service
+    * WIN_SVC_PASSWORD: Password for the user
 
 ### Security Configuration (see further down for how to turn on/off various features)
 #### API Key Security (default)
