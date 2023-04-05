@@ -3,7 +3,7 @@ const os = require("os");
 const fs = require('fs-extra');
 const path = require('path');
 var Service = require('node-windows').Service;
-if (!os.platform().startsWith('win')) throw Error('This is not a windows machine.');
+if (!os.platform().startsWith('win')) throw Error('This is not a Windows machine.');
 
 // Create a new service object
 const svcDef = {
@@ -17,7 +17,7 @@ const svcDef = {
   workingDirectory: path.join(__dirname,'/../'),
   allowServiceLogon: true
 };
-console.log(svcDef);
+
 var svc = new Service(svcDef);
 if (process.env.WIN_SVC_ACCOUNT && process.env.WIN_SVC_DOMAIN && process.env.WIN_SVC_PASSWORD){
   svc.logOnAs.domain = process.env.WIN_SVC_DOMAIN;
@@ -60,4 +60,3 @@ switch (process.argv[2]){
     console.error('Expected [ install | uninstall | start | stop ]');
     process.exit(1);
 }
-//svc.install();
