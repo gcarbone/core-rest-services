@@ -37,9 +37,33 @@
         "consumes": [
           "application/json"
         ],
-        "parameters": [],
-        "responses": {},
-        "tags": []
+        "parameters": [
+          {
+            "type": "string",
+            "name": "file",
+            "in": "query",
+            "example": "./test.pdf"
+          },
+          {
+            "type": "boolean",
+            "name": "delete",
+            "in": "query",
+            "example": "false"
+          },
+          {
+            "type": "boolean",
+            "name": "asBody",
+            "in": "query",
+            "example": "false"
+          }
+        ],
+        "responses": {
+          "200": {}
+        },
+        "tags": [],
+        "produces": [
+          "application/pdf"
+        ]
       },
       "post": {
         "summary": "/filesystem",
@@ -102,96 +126,8 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "dn": {
-                    "type": "string"
-                  },
-                  "sAMAccountName": {
-                    "type": "string"
-                  },
-                  "whenCreated": {
-                    "type": "string"
-                  },
-                  "pwdLastSet": {
-                    "type": "string"
-                  },
-                  "userAccountControl": {
-                    "type": "string"
-                  },
-                  "cn": {
-                    "type": "string"
-                  },
-                  "description": {
-                    "type": "string"
-                  },
-                  "groups": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "dn": {
-                          "type": "string"
-                        },
-                        "cn": {
-                          "type": "string"
-                        },
-                        "description": {
-                          "type": "string"
-                        },
-                        "groupType": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "dn",
-                        "cn",
-                        "description",
-                        "groupType"
-                      ]
-                    }
-                  },
-                  "userPrincipalName": {
-                    "type": "string"
-                  },
-                  "mail": {
-                    "type": "string"
-                  },
-                  "sn": {
-                    "type": "string"
-                  },
-                  "givenName": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "dn",
-                  "sAMAccountName",
-                  "whenCreated",
-                  "pwdLastSet",
-                  "userAccountControl",
-                  "cn",
-                  "description",
-                  "groups",
-                  "userPrincipalName",
-                  "mail",
-                  "sn",
-                  "givenName"
-                ]
-              }
-            }
-          }
-        },
-        "tags": [],
-        "produces": [
-          "application/json"
-        ]
+        "responses": {},
+        "tags": []
       },
       "post": {
         "summary": "/ad/user",
@@ -428,5 +364,5 @@
   "schemes": [
     "https"
   ],
-  "host": "44.204.229.193:4000"
+  "host": "localhost:4000"
 }

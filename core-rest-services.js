@@ -51,12 +51,15 @@ app.get("/ping", function (req, res, next) {
 
 
 // ****************  Activate only ONE auth module at a time
+
+// PLEASE NEVER USE THIS.  FOR TESTING ONLY
+const auth = require("./endpoints/auth-noauth");
 // for auth-jwt
 //const auth = require("./endpoints/auth-jwt");
 //app.use("/auth", auth.router);
 
 // for auth-apikey
-const auth = require("./endpoints/auth-apikey");
+//const auth = require("./endpoints/auth-apikey");
 // ****************
 
 //filesystem

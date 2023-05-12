@@ -26,7 +26,37 @@
     "/filesystem": {
       "get": {
         "summary": "/filesystem",
-        "responses": {},
+        "parameters": [
+          {
+            "name": "file",
+            "in": "query",
+            "example": "./test.pdf",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "delete",
+            "in": "query",
+            "example": "false",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "asBody",
+            "in": "query",
+            "example": "false",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "tags": []
       },
       "post": {
@@ -66,96 +96,7 @@
     "/ad/user": {
       "get": {
         "summary": "/ad/user",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "dn": {
-                        "type": "string"
-                      },
-                      "sAMAccountName": {
-                        "type": "string"
-                      },
-                      "whenCreated": {
-                        "type": "string"
-                      },
-                      "pwdLastSet": {
-                        "type": "string"
-                      },
-                      "userAccountControl": {
-                        "type": "string"
-                      },
-                      "cn": {
-                        "type": "string"
-                      },
-                      "description": {
-                        "type": "string"
-                      },
-                      "groups": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "dn": {
-                              "type": "string"
-                            },
-                            "cn": {
-                              "type": "string"
-                            },
-                            "description": {
-                              "type": "string"
-                            },
-                            "groupType": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "dn",
-                            "cn",
-                            "description",
-                            "groupType"
-                          ]
-                        }
-                      },
-                      "userPrincipalName": {
-                        "type": "string"
-                      },
-                      "mail": {
-                        "type": "string"
-                      },
-                      "sn": {
-                        "type": "string"
-                      },
-                      "givenName": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "dn",
-                      "sAMAccountName",
-                      "whenCreated",
-                      "pwdLastSet",
-                      "userAccountControl",
-                      "cn",
-                      "description",
-                      "groups",
-                      "userPrincipalName",
-                      "mail",
-                      "sn",
-                      "givenName"
-                    ]
-                  }
-                }
-              }
-            }
-          }
-        },
+        "responses": {},
         "tags": []
       },
       "post": {
@@ -387,7 +328,7 @@
   "tags": [],
   "servers": [
     {
-      "url": "https://44.204.229.193:4000"
+      "url": "https://localhost:4000"
     }
   ]
 }

@@ -13,6 +13,8 @@ router.use((req,res,next) =>{
 router.get("/", async function (req, res, next) {
   const fn = req.query.file || req.body.file;
   const del = req.query.delete === 'true';
+  if (req.query.asBody != 'true') 
+    res.setHeader('Content-Disposition', 'attachment: filename="' + path.basename(fn) + '"');
   res.status(200).sendFile(path.resolve(fn),{},function (err){
     if (err) {
       next(err)
