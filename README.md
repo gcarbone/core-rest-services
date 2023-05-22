@@ -15,6 +15,8 @@ Designed to be easily extensible, Core REST Services aims to provide a REST inte
 ### Filesystem Access
 
     * Access to common filesystem operations
+    * Directories should be separated as "\", NOT "\" so as not to wreck the whole URI thing
+    * Does not support getting files with a "." as the first character (i.e. ".env") on Windows
 
 ### Command Line Execution
 

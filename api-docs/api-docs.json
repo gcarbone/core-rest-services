@@ -42,7 +42,7 @@
             "type": "string",
             "name": "file",
             "in": "query",
-            "example": "./test.pdf"
+            "example": "\\gpt\\oldorgchart.csv"
           },
           {
             "type": "boolean",
@@ -58,11 +58,25 @@
           }
         ],
         "responses": {
-          "200": {}
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string",
+              "example": "Internal ID,Name,Billing Address 1,Billing Address 2,Billing City,Billing State/Province,Billing Zip,Billing Country,Phone,Email,Current Month Usage,Industry Type,Company Size,Medium,Key Word,Search Engine,Asana Workspace,GRMS - Sub Client ID\n1664,13,1201 Peachtree St NE,,Atlanta,GA,30361,United States,897-234-7667,dee.sam@mailinator.com,,,,,,,,\n1665,14,2215 Lawson Lane,,Santa Clara,CA,95054,United States,,gilly.parker@mailinator.com,,,,,,,,\n1666,15,123 Main Stree,,Williamsport,MD,21795,United States,111-222-3333,dave.jones@goceligo.net,,Design,,,,,,\n1667,16,123 Import Street,,Atlanta,GA,30361,United States,555-777-8899,billy.bob@goceligo.net,,,,,,,,\n1669,18,3501 Quadrangle Blvd,,Orlando,FL,32817,United States,,silvester.erik@mailinator.com,,,,,,,,\n1670,19,,,,,,,,dave.rave@goceligo.net,,,,,,,,\n1763,21,123 Billing Address 1,,Destin,FL,32546,United States,,jack.daniels@goceligo.net,,Food & Hospitality,,,,,,\n1764,22,,,,,,,,david.mann@goceligo.net,,,,,,,,\n4388,Aaron cust_last,123 Cold Ave,,Greenbay,WI,54229,United States,111-222-3333,test_cust_last@celigo.com,,Advertising/Media,,,,,,\n324,ABC Co.,,,,,,,,,,,1 - 99 Employees,Natural Search,,,,\n325,abc company,,,,,,,,,,,1 - 99 Employees,Natural Search,,,,\n17720,ABC Telecom,55 Stillwater Road ,,Livonia,MI,48150,United States,,,,,,,,,,\n131,Acme Control,2300 Lake Drive,,St Petersburg,FL,57000,United States,519-541-7600,jhoover@acme.com,,Advertising/Media,1 - 99 Employees,Referral,CRM,Business.com,,\n\n"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "string",
+              "example": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>NotFoundError: Not Found<br> &nbsp; &nbsp;at createHttpError (C:\\core-rest-services\\node_modules\\send\\index.js:979:12)<br> &nbsp; &nbsp;at SendStream.error (C:\\core-rest-services\\node_modules\\send\\index.js:270:31)<br> &nbsp; &nbsp;at SendStream.pipe (C:\\core-rest-services\\node_modules\\send\\index.js:580:14)<br> &nbsp; &nbsp;at sendfile (C:\\core-rest-services\\node_modules\\express\\lib\\response.js:1130:8)<br> &nbsp; &nbsp;at ServerResponse.sendFile (C:\\core-rest-services\\node_modules\\express\\lib\\response.js:449:3)<br> &nbsp; &nbsp;at C:\\core-rest-services\\endpoints\\filesystem.js:19:19<br> &nbsp; &nbsp;at Layer.handle [as handle_request] (C:\\core-rest-services\\node_modules\\express\\lib\\router\\layer.js:95:5)<br> &nbsp; &nbsp;at next (C:\\core-rest-services\\node_modules\\express\\lib\\router\\route.js:144:13)<br> &nbsp; &nbsp;at Route.dispatch (C:\\core-rest-services\\node_modules\\express\\lib\\router\\route.js:114:3)<br> &nbsp; &nbsp;at Layer.handle [as handle_request] (C:\\core-rest-services\\node_modules\\express\\lib\\router\\layer.js:95:5)</pre>\n</body>\n</html>\n"
+            }
+          }
         },
         "tags": [],
         "produces": [
-          "application/pdf"
+          "text/html",
+          "text/csv"
         ]
       },
       "post": {
@@ -364,5 +378,5 @@
   "schemes": [
     "https"
   ],
-  "host": "localhost:4000"
+  "host": "44.204.229.193:4000"
 }
